@@ -11,6 +11,27 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
+$api = app('Dingo\Api\Routing\Router');
+
+$api->version('v1',function ($api){
+
+    $api->get('/',function (){
+      throw new
+      Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException([],"Method Not Allowed");
+    });
+
+   $api->get('categories','App\Http\Controllers\CategoryController@showAllCategory');
+   $api->get('categories/{id}','App\Http\Controllers\CategoryController@showOneCategory');
+   $api->post('categories','App\Http\Controllers\CategoryController@create');
+   $api->put('categories/{id}','App\Http\Controllers\CategoryController@update');
+   $api->delete('categories/{id}','App\Http\Controllers\CategoryController@delete');
+
+
+   $api->get('books','App\Http\Controllers\BookController@showAllBook');
+   $api->get('books/{id}','App\Http\Controllers\BookController@showOneBook');
+   $api->post('books','App\Http\Controllers\BookController@create');
+   $api->put('books/{id}','App\Http\Controllers\BookController@update');
+   $api->delete('books/{id}','App\Http\Controllers\BookController@delete');
+
 });
+
