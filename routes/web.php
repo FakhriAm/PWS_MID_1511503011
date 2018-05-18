@@ -20,7 +20,7 @@ $api->version('v1',function ($api){
       Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException([],"Method Not Allowed");
     });
 
-   $api->get('categories','App\Http\Controllers\CategoryController@showAllCategory');
+  $api->get('categories','App\Http\Controllers\CategoryController@showAllCategory');
    $api->get('categories/{id}','App\Http\Controllers\CategoryController@showOneCategory');
    $api->post('categories','App\Http\Controllers\CategoryController@create');
    $api->put('categories/{id}','App\Http\Controllers\CategoryController@update');
